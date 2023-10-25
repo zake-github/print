@@ -1,0 +1,41 @@
+{
+  "name": "print",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "files": [
+    "dist"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "css-loader": "^6.7.3",
+    "element-plus": "^2.3.1",
+    "less-loader": "^11.1.0",
+    "qrcode": "^1.5.1",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "vite": "^4.2.1"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.191",
+    "@types/qrcode": "^1.5.0",
+    "hard-source-webpack-plugin": "^0.13.1",
+    "jsbarcode": "^3.11.5",
+    "less": "^4.1.3",
+    "lodash": "^4.17.21",
+    "url-loader": "^4.1.1",
+    "vue": "^3.2.47",
+    "vue-loader": "^17.0.1",
+    "vuedraggable": "^4.1.0"
+  }
+}

@@ -1,0 +1,243 @@
+@dragWidth: 220px;
+@attrsWidth: 330px;
+
+.pd {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.overflowText {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: normal;
+}
+
+.font30 {
+  font-size: 30px;
+}
+
+.font12 {
+  font-size: 12px;
+}
+
+.print-model-wrapper {
+  display: flex;
+  min-width: 800px;
+  height: 100%;
+  user-select: none;
+  .pd;
+
+  .print-drags {
+    flex: 0 0 @dragWidth;
+    .pd;
+    width: @dragWidth;
+    min-width: @dragWidth;
+    max-width: @dragWidth;
+    height: 100%;
+    min-height: 500px;
+    border-right: 1px solid #e3e3e3;
+
+    .print-drags-title {
+      color: #358efe;
+      font-size: 16px;
+      margin: 10px;
+      text-align: center;
+    }
+
+    .print-drag-tool_item {
+      width: 60px;
+      height: 60px;
+      border-radius: 2px;
+      border: 1px dashed #e1e1e1;
+      background-color: #f8f9fb;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      padding-top: 4px;
+      box-sizing: border-box;
+      cursor: move;
+      display: inline-flex;
+      flex-direction: column;
+      color: #7d93ba;
+      text-align: center;
+      vertical-align: top;
+      line-height: 1.2;
+    }
+
+    .print-drag-tool_item-field {
+      .overflowText;
+      height: 30px;
+      line-height: 30px;
+      padding: 0;
+    }
+  }
+
+  .print-content {
+    .pd;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - @dragWidth - @attrsWidth);
+    min-width: calc(100% - @dragWidth - @attrsWidth);
+    max-width: calc(100% - @dragWidth - @attrsWidth);
+
+    .content-btns {
+      width: 100%;
+      height: 60px;
+      background-color: #fff;
+      padding-left: 15px;
+      display: flex;
+      align-items: center;
+
+      .el-button {
+        font-weight: 400;
+      }
+      .import-btn {
+        position: relative;
+        input {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+        }
+      }
+    }
+
+    .content-canvas-wrapper {
+      padding: 12px;
+      flex: 1;
+
+      .content-canvas {
+        background-color: #f5f5f5;
+        outline: none;
+        height: 100%;
+        border: 1px solid #e1e1e1;
+        position: relative;
+        .pd;
+
+        .content-canvas-drag {
+          background-color: #fff;
+          border: 1px solid #e1e1e1;
+          .pd;
+          position: absolute;
+          transition: all 0.1s;
+
+          .print-content_item {
+            cursor: default;
+            border: 1px solid #e1e1e1;
+            position: relative;
+
+            .right-point {
+              width: 8px;
+              height: 8px;
+              border-radius: 4px;
+              background: #f60;
+              position: absolute;
+              z-index: 1;
+              left: auto;
+              right: -4px;
+              top: calc(50% - 4px);
+              cursor: e-resize;
+            }
+
+            .bottom-point {
+              width: 8px;
+              height: 8px;
+              border-radius: 4px;
+              background: #f60;
+              position: absolute;
+              z-index: 1;
+              right: calc(50% - 4px);
+              top: auto;
+              bottom: -4px;
+              cursor: s-resize;
+            }
+          }
+
+          .is-dashed {
+            border: 1px dashed #cebcbc !important;
+          }
+
+          .moving-left {
+            display: none;
+            border-left: 1px dashed rgb(169, 169, 169);
+            width: 0;
+            height: 1000mm;
+            position: absolute;
+            left: -1px;
+            top: -500mm;
+          }
+
+          .moving-right {
+            display: none;
+            border-right: 1px dashed rgb(169, 169, 169);
+            width: 0;
+            height: 1000mm;
+            position: absolute;
+            left: auto;
+            right: -1px;
+            top: -500mm;
+          }
+
+          .moving-top {
+            display: none;
+            border-top: 1px dashed rgb(169, 169, 169);
+            width: 1000mm;
+            height: 0;
+            position: absolute;
+            left: -500mm;
+            top: -1px;
+          }
+
+          .moving-bottom {
+            display: none;
+            border-bottom: 1px dashed rgb(169, 169, 169);
+            width: 1000mm;
+            height: 0;
+            position: absolute;
+            top: auto;
+            left: -500mm;
+            bottom: -1px;
+          }
+
+          .moving {
+
+            .moving-top,
+            .moving-right,
+            .moving-bottom,
+            .moving-left {
+              display: block;
+            }
+          }
+
+          .is-active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+            cursor: move;
+          }
+        }
+      }
+    }
+  }
+
+  .print-attrs {
+    flex: 0 0 @attrsWidth;
+    .pd;
+    width: @attrsWidth;
+    min-height: @attrsWidth;
+    max-width: @attrsWidth;
+    border-left: 1px solid #e3e3e3;
+  }
+}
